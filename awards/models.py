@@ -19,3 +19,7 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete() 
+
+    def edit_bio(self, new_bio):
+        self.bio = new_bio
+        self.save()
