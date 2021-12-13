@@ -10,3 +10,9 @@ class Profile(models.Model):
     location = models.CharField(max_length = 40)
     email = models.EmailField()
     link = models.URLField()
+
+    def __str__(self):
+        return self.user.username
+
+    def save_profile(self):
+        self.save()
