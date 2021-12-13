@@ -88,3 +88,7 @@ class Vote(models.Model):
 
     def delete__vote(self):
         self.delete()
+
+    @classmethod
+    def get_project_votes(cls, project):
+        return cls.objects.filter(project = project)
