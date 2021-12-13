@@ -57,4 +57,9 @@ class Project(models.Model):
     def search_project(cls,name):
         return Project.objects.filter(name__icontains = name)
 
+    @classmethod
+    def get_user_projects(cls,profile):
+        return cls.objects.filter(profile=profile)
+
+
 
