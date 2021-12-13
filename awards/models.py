@@ -85,3 +85,6 @@ class Vote(models.Model):
 
     def save_vote(self):
         self.save()
+
+    def delete__vote(self):
+        self.delete()
