@@ -45,4 +45,9 @@ class Project(models.Model):
 
     def delete_project(self):
         self.delete()
+    
+    def voters_count(self):
+        return self.voters.count()
+
+    
 
