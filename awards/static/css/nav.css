@@ -1,0 +1,260 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300);
+
+body{
+  color:black;
+  font-family:"Roboto";
+  background-color: #fff;
+  font-size: 1.2rem;
+  overflow-x: hidden !important;
+}
+
+*:after,
+*:before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a, a:hover{
+    text-decoration: none;
+}
+.cd-header{
+    position: fixed;
+	width:100%;
+	top:0;
+	left:0;
+    z-index:100;
+    background-color: #fff;
+    height: 7rem;
+} 
+.header-wrapper{
+    position: relative;
+	width: calc(100% - 10rem);
+} 
+.logo-wrap {
+	position: absolute;
+	display:block;
+	right:0;
+	top: 4rem;
+	cursor: pointer;
+}
+.logo-wrap a {
+	cursor: pointer;
+	font-weight: 900;
+	font-size: 3rem;
+	line-height: 2rem;
+	text-transform: lowercase;
+	letter-spacing: 0.2rem;
+	color: #444;
+	transition : all 0.3s ease-out;
+}
+.logo-wrap a span{ 
+    color: darkgoldenrod;
+    text-transform: uppercase;
+}
+.logo-wrap a:hover {
+	opacity: 0.9;
+}
+
+.menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+  background: #212121;
+  width: 25rem;
+  box-sizing: border-box;
+  transition: all 250ms;
+  -webkit-transform: translateZ(0) translateX(-100%);
+  transform: translateZ(0) translateX(-100%);
+  text-align:center;
+  box-shadow: 0 0 1rem #000;
+}
+
+.active{
+  transform: translateZ(0) translateX(0);
+  transform: translateZ(0) translateX(0);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+h1{
+  margin-top:15rem;
+}
+ul{
+  padding:0;
+  list-style:none;
+  font-size:1.4rem;
+}
+li{
+  padding:0.7rem 1rem;
+}
+.navbar-form .form-control{
+    background: transparent;
+    outline: none;
+}
+.menu a{
+  text-decoration:none;
+  padding:1rem 1.5rem;
+  color:#fff;
+  font-family:"Roboto";
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+#wrapper .content{
+  position:relative;
+  width:40rem;
+}
+.button{
+  width:6rem;
+  height:6rem;
+  margin: -1rem 3rem 3rem;
+  padding: 1rem;
+  cursor:pointer;
+  position: relative;
+}
+
+.nav-toggle {
+    top: 5rem;
+    z-index: 1;
+    left: 9.3rem;
+    width: 6rem;
+    height: 6rem;
+    border: none;
+    background: none;
+    position: absolute;
+    -webkit-appearence: none;
+    transform: translate(-50%, -50%);
+}
+.nav-toggle:focus, .nav-toggle:active {
+    outline: none;
+}
+.nav-toggle .nav-label {
+    opacity: 1;
+    float: left;
+    display: none;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.nav-open path{
+    stroke: darkgoldenrod !important;
+}
+.nav-toggle.nav-open .nav-svg .dots {
+    left: 2.4rem;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0);
+    animation: showDots 0.2s 0.2s forwards;
+}
+.nav-toggle.nav-open .nav-svg .dots:before {
+    animation: toCloseDotsTop 0.6s 0.2s forwards;
+}
+.nav-toggle.nav-open .nav-svg .dots:after {
+    animation: toCloseDotsBottom 0.6s 0.2s forwards;
+}
+.nav-toggle.nav-open .nav-svg path.x {
+    transition: all 0.2s 0.2s ease-in-out;
+    transform: rotate(45deg) translate(17%, -57%) scaleX(0.75);
+}
+.nav-toggle.nav-open .nav-svg path.x:first-of-type {
+    transform-origin: right center;
+    transform: rotate(-45deg) translate(-17%, -28%) scaleX(0.75);
+}
+.nav-toggle.nav-open .nav-svg path.yy {
+    stroke-dashoffset: -1200;
+    transition: 0.25s 0s ease-in-out;
+}
+.nav-toggle .nav-svg {
+    display: inline-block;
+    transform: translate(-0.1rem, 0.2rem);
+}
+.nav-toggle .nav-svg .dots {
+    top: 2.4rem;
+    left: 1rem;
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    transition: background 0.25s ease-out, left 0.25s ease-out;
+}
+ .nav-open .nav-svg .dots:before, .nav-open .nav-svg .dots:after{
+    background: darkgoldenrod !important;
+}
+.nav-toggle .nav-svg .dots:before, .nav-toggle .nav-svg .dots:after {
+    left: 0;
+    opacity: 1;
+    width: 0.2rem;
+    content: '';
+    height: 0.2rem;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+}
+.nav-toggle .nav-svg .dots:before {
+    top: -0.7rem;
+}
+.nav-toggle .nav-svg .dots:after {
+    top: 0.7rem;
+    transition-delay: 0.1s;
+}
+.nav-toggle .nav-svg path {
+    stroke: black;
+    stroke-width: 70;
+}
+.nav-toggle .nav-svg path.x {
+    transition: all 0.25s 0s ease-in-out;
+    transform-origin: left center;
+    transform: rotate(0deg) translate(0, 0) scale(1);
+}
+.nav-toggle .nav-svg path.yy {
+    stroke-dashoffset: 1700;
+    stroke-dasharray: 2520 3000;
+    transition: 0.2s 0.2s ease-in-out;
+}
+@keyframes showDots {
+    0% {
+        opacity: 0;
+   }
+    100% {
+        opacity: 1;
+   }
+}
+@keyframes toCloseDotsBottom {
+    from, 40%, 75%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+   }
+    0% {
+        transform: translate3d(0, 0, 0);
+   }
+    40% {
+        transform: translate3d(0, 0.5rem, 0);
+   }
+    75% {
+        transform: translate3d(0, -0.3rem, 0);
+   }
+    to {
+        transform: none;
+   }
+}
+@keyframes toCloseDotsTop {
+    from, 40%, 75%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+   }
+    0% {
+        transform: translate3d(0, 0, 0);
+   }
+    40% {
+        transform: translate3d(0, -0.5rem, 0);
+   }
+    75% {
+        transform: translate3d(0, 0.3rem, 0);
+   }
+    to {
+        transform: none;
+   }
+}
+
+
