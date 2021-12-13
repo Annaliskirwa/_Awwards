@@ -92,3 +92,7 @@ class Vote(models.Model):
     @classmethod
     def get_project_votes(cls, project):
         return cls.objects.filter(project = project)
+
+    @classmethod
+    def get_project_voters(cls, voter):
+        return cls.objects.filter(voter = voter)
