@@ -82,3 +82,6 @@ class Vote(models.Model):
     design = IntegerRangeField(min_value=1, max_value=10)
     usability = IntegerRangeField(min_value=1, max_value=10)
     content = IntegerRangeField(min_value=1, max_value=10)
+
+    def save_vote(self):
+        self.save()
