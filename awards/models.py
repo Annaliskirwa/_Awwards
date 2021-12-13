@@ -96,3 +96,7 @@ class Vote(models.Model):
     @classmethod
     def get_project_voters(cls, voter):
         return cls.objects.filter(voter = voter)
+
+
+    class Meta:
+        ordering = ['-post_date']
