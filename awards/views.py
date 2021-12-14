@@ -54,3 +54,23 @@ def home(request):
         
     return render(request, "home.html", {"date": date, "title": title, "projects": projects, "highest":highest_score, "votes": highest_votes})
 
+@login_required(login_url='/accounts/login/')
+def profile(request, profile_id):
+    title = "Ann-awwards"
+    try:
+        user = User.objects.get(pk = profile_id)
+        profile = Profile.objects.get(user = user)
+        title = profile.user.username
+        projects = Project.get_user_projects(profile.id)
+        projects_count = projects.count()
+        votes= []
+        for project in projects:
+            votes.append(project.average_score)
+        total_votes = sum(votes)
+        average = 0
+        if len(projects)> 1:
+            average = total_votes / len(projects)
+    except Profile.DoesNotExist:
+        raise Http404()        
+    return render(request, "user/profile.html", {"profile": profile, "projects": projects, "count": projects_count, "votes": total_votes, "average": average, "title": title})
+
