@@ -127,3 +127,23 @@ def project(request, project_id):
         project.save()    
 
     return render(request, 'project/project.html', {"title": title, "form": form, "project": project, "votes": votes, "voted": voted, "total_votes":total_votes})
+
+
+@login_required(login_url='/accounts/login/')
+def add_project(request):
+    title = "Add your project"
+    if request.method == "POST":
+        form = AddProjectForm(request.POST, request.FILES)
+        current_user = request.user
+        try:
+            profile = Profile.objects.get(user = current_user)
+        except Profile.DoesNotExist:
+            raise Http404()
+        if form.is_valid():
+            project = form.save(commit= False)
+            project.profile = profile
+            project.save()
+        return redirect("home")
+    else:
+        form = AddProjectForm()
+    return render(request, 'project/add_project.html', {"form": form, "title":title})
