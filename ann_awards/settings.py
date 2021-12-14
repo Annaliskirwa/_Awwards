@@ -91,11 +91,11 @@ DATABASES = {
     }
 }
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dawkiqdwf',
-    'API_KEY': '616294889634382',
-    'API_SECRET': 'EbHqWdPX0QO8Fnywrnjnc5hZCkw',
-}
+cloudinary.config( 
+  cloud_name = "dawkiqdwf", 
+  api_key = "616294889634382", 
+  api_secret = "EbHqWdPX0QO8Fnywrnjnc5hZCkw" 
+)
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
