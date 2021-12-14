@@ -169,3 +169,41 @@ def rate_project(request,project_id):
     else:
         form = RateProjectForm()
     return render(request, 'project/project.html', {"form": form})
+
+
+@login_required(login_url='/accounts/login/')
+def search_project(request):
+    if "project" in request.GET and request.GET["project"]:
+        searched_project = request.GET.get("project")
+        title = "aWWWards | search"
+        voted = False
+        try:
+            projects = Project.search_project(searched_project)
+            count = projects.count()
+            message =f"{searched_project}"
+            if len(projects) == 1:
+                project = projects[0]
+                form = RateProjectForm()
+                title = project.name.upper()
+                votes = Vote.get_project_votes(project.id)
+                voters = project.voters
+                
+                for vote in votes:
+                    try:
+                        user = User.objects.get(pk = request.user.id)
+                        profile = Profile.objects.get(user = user)
+                        voter = Vote.get_project_voters(profile)
+                        voted = False
+                        if request.user.id in voters_list: 
+                            voted = True
+                    except Profile.DoesNotExist:
+                        voted = False
+                return render(request, 'project/project.html', {"form": form, "project": project, "voted": voted, "votes": votes, "title": title})
+            return render(request, 'project/search.html', {"projects": projects,"message": message, "count":count, "title": title})
+        except ObjectDoesNotExist:
+            suggestions = Project.display_all_projects()
+            message= f"No project was found with the title: {searched_project}"
+            return render(request, 'project/search.html', {"suggestions":suggestions,"message": message, "title": title})
+    else:
+        message = "You have not searched for anything"
+        return render(request,'project/search.html', {"message": message, "title": title})
