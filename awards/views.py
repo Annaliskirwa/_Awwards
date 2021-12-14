@@ -12,6 +12,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProjectSerializer,ProfileSerializer
+
+
 # Create your views here.
 # def welcome(request):
 #     return render(request, 'base.html')
@@ -207,3 +212,10 @@ def search_project(request):
     else:
         message = "You have not searched for anything"
         return render(request,'project/search.html', {"message": message, "title": title})
+
+
+class ProjectList(APIView):
+    def get(self,request,format = None):
+        projects =  Project.objects.all()
+        serializers = ProjectSerializer(projects, many=True)
+        return Response(serializers.data)
