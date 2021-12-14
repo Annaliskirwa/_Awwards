@@ -38,3 +38,19 @@ def email(request):
     name = current_user.username
     send_signup_email(name, email)
     return redirect(create_profile)
+
+@login_required(login_url='/accounts/login/')
+def home(request):
+    title= "Ann-awwards"
+    date = dt.date.today()
+    projects = Project.display_all_projects()
+    projects_scores = projects.order_by('-average_score')
+    highest_score = None
+    highest_votes = None
+    if len(projects) >= 1:
+        highest_score = projects_scores[0]
+        votes = Vote.get_project_votes(highest_score.id)
+        highest_votes = votes[:3]    
+        
+    return render(request, "home.html", {"date": date, "title": title, "projects": projects, "highest":highest_score, "votes": highest_votes})
+
