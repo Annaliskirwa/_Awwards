@@ -13,6 +13,22 @@ from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 
 # Create your views here.
-def welcome(request):
-    return render(request, 'base.html')
+# def welcome(request):
+#     return render(request, 'base.html')
+
+
+def create_profile(request):
+    current_user = request.user
+    title = "Create Profile"
+    if request.method == 'POST':
+        form = CreateProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return HttpResponseRedirect('/')
+
+    else:
+        form = CreateProfileForm()
+    return render(request, 'user/create_profile.html', {"form": form, "title": title})
 
