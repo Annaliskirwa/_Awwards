@@ -74,3 +74,56 @@ def profile(request, profile_id):
         raise Http404()        
     return render(request, "user/profile.html", {"profile": profile, "projects": projects, "count": projects_count, "votes": total_votes, "average": average, "title": title})
 
+@login_required(login_url='/accounts/login/')
+def project(request, project_id):
+    form = RateProjectForm()
+    project = Project.objects.get(pk=project_id)
+    title = project.name.title() + " | Ann-awwards"
+    votes = Vote.get_project_votes(project.id)
+    total_votes = votes.count()
+    voted = False
+    
+    voters_list =[]
+    average_list = []
+    content_list = []
+    design_list = []
+    usability_list = []
+    for vote in votes:
+        voters_list.append(vote.voter.id)
+        average_summation = vote.design + vote.content + vote.usability
+        average = average_summation/3
+        average_list.append(average)
+        content_list.append(vote.content)
+        design_list.append(vote.design)
+        usability_list.append(vote.usability)
+
+        try:
+            user = User.objects.get(pk = request.user.id)
+            profile = Profile.objects.get(user = user)
+            voter = Vote.get_project_voters(profile)
+            voted = False
+            if request.user.id in voters_list: 
+                voted = True
+        except Profile.DoesNotExist:
+            voted = False    
+    print("USER")
+    print(request.user.id)
+    print(project.profile.user.id)
+    average_score = 0
+    average_design = 0
+    average_content = 0
+    average_usability = 0
+    if len(average_list) > 0:
+        average_score = sum(average_list) / len(average_list)
+        project.average_score = average_score
+        project.save()  
+    if total_votes != 0:
+        average_design = sum(design_list) / total_votes
+        average_content = sum(content_list) / total_votes
+        average_usability = sum(usability_list) / total_votes 
+        project.average_design = average_design
+        project.average_content =average_content
+        project.average_usability = average_usability
+        project.save()    
+
+    return render(request, 'project/project.html', {"title": title, "form": form, "project": project, "votes": votes, "voted": voted, "total_votes":total_votes})
