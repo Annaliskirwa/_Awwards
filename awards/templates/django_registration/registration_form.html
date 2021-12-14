@@ -4,28 +4,27 @@
 {% block content %}
 <div class="container">
     <div class="welcome">
-      <div class="signinbox">
-        <div id="signin">
-          <h1>Sign in</h1>
-          <form action="/accounts/login/" method="post" class="more-padding" autocomplete="off">
+      <div class="signupbox">
+        <div id="signup">
+          <h1>register</h1>
+          <form action="/accounts/register/" method="post" autocomplete="off">
             {% csrf_token %}
             {% bootstrap_form form%}
-            <button class="button submit" type="submit">Login</button>
+            <button class="button submit" type="submit">Sign Up</button>
         </form>
         </div>
-      </div>      
-      <div class="rightbox">
+      </div>
+      <div class="leftbox">
         <div class="logo-wrap">
           <a href="/">Ann-<span>awwards</span></a>
         </div>
         <h2 class="spacer"></h2>
         <img class="award" src="{% static 'images/award.png' %}"/>
-        <p class="account">Don't have an account?</p>
-        <a href="/accounts/register/"><button class="button signup">Sign up</button></a>
+        <p class="account">Do you have an account?</p>
+        <a href="/accounts/login/"><button class="button signin">Login</button></a>
       </div>
     </div>
    </div>
   
   </div>
 {% endblock %}
-
