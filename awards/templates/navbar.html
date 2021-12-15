@@ -3,13 +3,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a  href="/">home</a>
+          <a style="text-transform: uppercase;" href="/">home</a>
         </li>
         <li class="nav-item">
-          <a  href="/profile/{{request.user.id}}">my profile</a>
+          <a style="text-transform: uppercase;"  href="/profile/{{request.user.id}}">my profile</a>
         </li>
         <li>
-          <a  href="/add_project">add a project</a>
+          <a style="text-transform: uppercase;"  href="/add_project">add a project</a>
         </li>
   </nav>
 </div>
@@ -22,9 +22,9 @@
       <div class="menu">
         <h1 style="color: crimson;" >Ann-awwards</h1>
         <ul>
-          <li><a href="/api/profiles">profile api</a></li>
-          <li><a href="/api/projects">project api</a></li>
-          <li><a href="/logout">logout</a></li>
+          <li><a style="text-transform: uppercase;"  href="/api/profiles">profile api</a></li>
+          <li><a style="text-transform: uppercase;"  href="/api/projects">project api</a></li>
+          <li><a style="text-transform: uppercase;"  href="/logout">logout</a></li>
           <form class="navbar-form" role="search" , action="{% url 'search_project' %}">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search project" name="project">
