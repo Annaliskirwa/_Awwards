@@ -3,30 +3,22 @@
 {%load bootstrap3 %}
 {% block content %}
 <body style="background-image: url(https://images.unsplash.com/photo-1569705460033-cfaa4bf9f822?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1037&q=80); background-repeat: no-repeat;background-size: cover;">
-  <div class="logo-wrap">
-    <a style="color: crimson;" href="/">Ann-awwards</a>
-  </div>
 <div class="container">
     <div class="welcome" style="background-color:rgba(0, 0, 0, 0.3);">
       <div>
         <div id="signin">
+          <h1 style="color: crimson;">Ann-awwards</h1>
           <h1 style="color: crimson;">Sign in</h1>
           <form action="/accounts/login/" method="post" class="more-padding" autocomplete="off">
             {% csrf_token %}
             {% bootstrap_form form%}
             <button class="button submit" type="submit">Login</button>
         </form>
-        </div>
-      </div>      
-      <div class="rightbox">
-        
-        <h2 class="spacer"></h2>
-        <img class="award" src="{% static 'images/award.png' %}"/>
-        <p style="color: azure;" class="account">Don't have an account?</p>
+        <p style="color: crimson; text-align: center;" class="account">Don't have an account?</p>
         <a href="/accounts/register/"><button class="button signup">Sign up</button></a>
       </div>
-    </div>
-   </div>
+        </div>
+      </div>      
   
   </div>
 {% endblock %}
