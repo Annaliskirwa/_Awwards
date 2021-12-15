@@ -5,11 +5,8 @@
     </div>
     <div id="wrapper">
       <div class="menu">
-        <h1>menu</h1>
+        <h1 style="color: crimson;" >Ann-awwards</h1>
         <ul>
-          <li><a href="/">home</a></li>
-          <li><a href="/profile/{{request.user.id}}">my profile</a></li>
-          <li><a href="/add_project">add a project</a></li>
           <li><a href="/logout">logout</a></li>
           <form class="navbar-form" role="search" , action="{% url 'search_project' %}">
             <div class="input-group">
@@ -48,3 +45,19 @@
     </div>
   </div>
 </header>
+
+<div>
+  <nav class="navbar" style="margin-left: 35%;">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a  href="/">home</a>
+        </li>
+        <li class="nav-item">
+          <a  href="/profile/{{request.user.id}}">my profile</a>
+        </li>
+        <li>
+          <a  href="/add_project">add a project</a>
+        </li>
+  </nav>
+</div>
