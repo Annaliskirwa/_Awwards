@@ -24,7 +24,7 @@ As a user of Ann-awwards web application, you will be able to:
 ## Setup/Installation Requirements  
  ### To interact with the Ann-awwards web application:
  * Have the latest version of browser installed   
- * Click on this <a href = "https://annawwwards.herokuapp.com/">link</a> to use Ann-awwards  
+ * Click on this <a href = "https://ann-awwards.herokuapp.com/">link</a> to use Ann-awwards  
   ### To contribute to Ann-awwards web application:  
  #### Clone the Repo  
  * Create an account on Github
