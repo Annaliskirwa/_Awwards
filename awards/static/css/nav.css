@@ -42,14 +42,14 @@ a, a:hover{
 	font-weight: 900;
 	font-size: 3rem;
 	line-height: 2rem;
-	text-transform: lowercase;
+	text-transform: none;
 	letter-spacing: 0.2rem;
 	color: #444;
 	transition : all 0.3s ease-out;
 }
 .logo-wrap a span{ 
-    color: darkgoldenrod;
-    text-transform: uppercase;
+    color: crimson;
+    text-transform: none;
 }
 .logo-wrap a:hover {
 	opacity: 0.9;
