@@ -10,13 +10,13 @@
 <div class="of-the-day-wrapper"
 	style="background-image: url('{{highest.screenshot.url}}');">
 	<div class="of-the-day-wrapper-top">
-		<label>
+		<label style="color: crimson;">
 			This is the site of  <span>{{date}}</span>
 		</label>
 	</div>
 	<div class="of-the-day-wrapper-middle">
 		<a href="{% url 'project' highest.id %}">{{highest.name}}</a>
-		<div class="owner-info">BY <a href="{% url 'profile' highest.profile.user.id %}">{{highest.profile.user.username}}</a> FROM BY {{highest.profile.location}}</div>
+		<div class="owner-info">By <a href="{% url 'profile' highest.profile.user.id %}">{{highest.profile.user.username}}</a> FROM BY {{highest.profile.location}}</div>
 		<div class="d-flex">
 			<div id="average">{{highest.average_score | floatformat:0}}<span>average</span></div>
 			<div class="design">{{highest.average_design | floatformat:0}}<span>design</span></div>
@@ -33,7 +33,7 @@
 {%endif%}
 
 <div class="text-left divider">
-	Submissions | <span> Vote for the projects</span>
+	Projects available | <span style="color: crimson;"> Vote for the projects</span>
 </div>
 {% if projects %}
 <div class="submissions-wrapper">
